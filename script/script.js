@@ -1,4 +1,5 @@
 let url = "https://api.openweathermap.org/data/2.5/weather?q=Stockton,ca,usa&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87";
+let = urlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=stockton&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87";
 // c3f0a91bddaf387d60a31b1c24fef012
 let place = document.getElementById("place"),
   temp = document.getElementById("temp"),
@@ -15,10 +16,19 @@ let place = document.getElementById("place"),
   favArr = [],
   weatherArr = [],
   searchedCity = "";
+  
+  // Forcast Variables
+  let date1 = document.getElementById('date1'),
+  dOfWeek1 = document.getElementById('dOfWeek1'),
+  middayTemp1 = document.getElementById('middayTemp1'),
+  description1 = document.getElementById('description1'),
+  icon1 = document.getElementById('icon1');
+
 
 //Converting stringified arr into JSON obj
 favData = JSON.parse(localStorage.getItem("favWeather"));
 
+// creating the favorite on the offCanvas
 if (favData && favData != null) {
   for (let i = 0; i < favData.length; i++) {
     if ((i == 0)) {
@@ -47,6 +57,24 @@ if (favData && favData != null) {
   }
 }
 
+function fetchForcast(urlForcast){
+  fetch(urlForcast)
+  .then((response) => response.json())
+  .then((data) =>{
+      getForcast(data);
+  })
+}
+
+function getForcast(forcastData){
+  console.log(forcastData);
+  let mainCast = forcastData.list[5].main;
+  // dOfWeek1.innerText = forcastData.list[5].dt_txt.getDay();
+  date1.innerText = forcastData.list[5].dt_txt;
+  middayTemp1.innerText = parseInt(mainCast.temp);
+  description1.innerText = forcastData.list[5].weather[0].description ;
+  // console.log(forcastData.list[5].weather[0].description)
+}
+
 function fetchWeather(url) {
   fetch(url)
     .then((response) => response.json())
@@ -54,6 +82,7 @@ function fetchWeather(url) {
       getWeather(data);
     });
 }
+
 
 function getWeather(weatherData) {
   weatherArr.push(weatherData);
@@ -65,6 +94,7 @@ function getWeather(weatherData) {
   feels_like.innerText = `Feels like / ${parseInt(main.feels_like)}`;
   speed.innerText = `Speed / ${parseInt(weatherData.wind.speed)}`;
   deg.innerText = `Degrees / ${parseInt(weatherData.wind.deg)}`;
+  // tempIcon.src = 'http://openweathermap.org/img/wn/${weatherData.weather[1].icon}.png';
 }
 
 search.addEventListener("keypress", function (event) {
@@ -103,3 +133,4 @@ favBtn.addEventListener("click", function (e) {
 });
 
 fetchWeather(url);
+fetchForcast(urlForcast);
