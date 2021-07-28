@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>My Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+
+    <div id="search-form">
+        <input type="text"
+        placeholder="Enter City Name"
+        id="search"
+        required
+        autocomplete="off"
+        />
+        <br>
+    </br>
+    <button id="searchBtn" class="">Search</button>
+    <button id="favBtn">Fav</button>
+
+</div>
+
+
+    
+    <main id="app-container">
+
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <p id="place">-------</p>  
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-5 d-flex justify-content-center">
+                <img id="temp-icon" src="./assets/sun.svg" alt="">
+                
+            </div>
+
+            <div class="col-4">
+                <p id="temp">---</p>
+            </div>
+
+            <div class="col-3">
+
+            </div>
+    
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h5 class="d-flex justify-content-center">Temps</h5>
+            </div>
+            <div class="col-3 ">
+                <h5 class="d-flex justify-content-end">Wind</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+                <h6 id="temp_max">High/</h6>
+                
+            </div>
+            <div class="col-6">
+                <h6 id="speed">Wind speed</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+                <h6 id="temp_min">Low/</h6>
+            </div>
+            <div class="col">
+                <h6 id="deg">Degrees</h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+                <h6 id="feels_like">Feels like/</h6>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="inject"></div>
+</div>
+   
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h1>Our Weather App</h1>
+            </div>
+            <div class="col-12 d-flex justify-content-center pt-5">
+                <h2 id="place">Stockton, CA</h2>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center">
+                <h3 id="temp">91</h3>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <h6 >Min</h6>
+            </div>
+            <div class="col-6 d-flex justify-content-start">
+                <h6 >Max</h6>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <h6 id="temp_min">78</h6>
+            </div>
+            <div class="col-6 d-flex justify-content-start">
+                <h6 id="temp_max">99</h6>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center">
+                <h6>Feels Like</h6>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center">
+                <h6 id="feels_like">87</h6>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center pt-5">
+                <h2>Wind</h2>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <h6>Speed</h6>
+            </div>
+            <div class="col-6 d-flex justify-content-start">
+                <h6>Degrees</h6>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end">
+                <h6 id="speed">10</h6>
+            </div>
+            <div class="col-6 d-flex justify-content-start">
+                <h6 id="deg">300</h6>
+            </div>
+            <div class="col-12 d-flex justify-content-center pt-5">
+                <input type="text" id="">
+                <button class="btn btn-primary" id="btn">Search</button> -->
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./script/script.js"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
