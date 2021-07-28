@@ -7,6 +7,12 @@ body{
 height: 100px;
 background-color: #462659;
 color:#ffffff;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.prevBtn
+{
+    background-image: url(../assets/left-arrow.png);
 }
 
 #search-form
@@ -20,34 +26,31 @@ margin-top: 100px;
 #temp
 {
 text-align: center;
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 font-size: 4rem;
 color: #ffffff;
 }
 
 #temp #temp-unit
 {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 font-size: 1.5rem;
 color: #ffffff;
 }
 #temp #temp-value
 {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 font-size: 2rem;
 color: #ffffff;
 
 }
-#climate
+/* #climate
 {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 font-size: 2.5rem;
 color: #ffffff;
 text-align: center;
-}
+} */
 #place
 {
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 font-size: 2.5rem;
 color: #ffffff;
 text-align: center;
@@ -63,7 +66,6 @@ width: 70%;
 height: auto;
 align-items: center;
 }
-
 
 main{
 
@@ -100,10 +102,29 @@ color: #ffffff;
 background: #ff6768;
 border-color: #ff6768;
 transition: all 0.4s ease 0s;
-
-
-
 }
+
+#viewFavBtn{
+    color: #494949;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: white;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 11px;
+    border: 2px solid #494949;
+    display: inline-block;
+    transition: all 0.4 ease 0s; 
+}
+
+#viewFavBtn:hover{
+    color: #ffffff;
+background: #ff6768;
+border-color: #ff6768;
+transition: all 0.4s ease 0s;
+}
+
+
 
 #search
 {
@@ -141,4 +162,14 @@ border: none;
     background: #ff6768;
     border-color: #ff6768;
     transition: all 0.4s ease 0s;
+}
+
+
+.canvas-body{
+    background-color: #6b778d;
+    color: black;
+}
+
+.canvas-header{
+    color: black;
 }

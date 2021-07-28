@@ -10,25 +10,40 @@
     <link rel="stylesheet" href="./styles/style.css">
     <title>My Weather App</title>
   </head>
-  <body>
-    <div class="container">
 
+  <body>
+
+    <!-- View Favs Button -->
+      <div class="row">
+          <div class="col p-5 d-flex justify-content-end">
+            <a id="viewFavBtn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                View Favs
+              </a>
+          </div>
+          <div class="row">
+              <div class="col d-flex justify-content-center">
+                  <h1>Da Weather Mane</h1>
+              </div>
+          </div>
+      </div>
+
+    <!-- Input area -->
     <div id="search-form">
-        <input type="text"
+        <input required 
+        type="text"
         placeholder="Enter City Name"
         id="search"
-        required
         autocomplete="off"
         />
         <br>
     </br>
     <button id="searchBtn" class="">Search</button>
     <button id="favBtn">Fav</button>
-
 </div>
 
 
-    
+
+   <!-- Weather info -->
     <main id="app-container">
 
         <div class="row">
@@ -87,68 +102,43 @@
 
     </main>
 
-    <div class="inject"></div>
-</div>
+    <!-- Fav navigation area -->
+    <!-- <div class="row pt-5">
+        <div class="col-3"></div>
+        <div class="col-3 d-flex justify-content-center">
+            
+            <button class="prevBtn"> <img class="" src="/assets/left-arrow.png" alt="" srcset=""> </button>
+        </div>
+        <div class="col-3 d-flex justify-content-center">
+            <img class="" src="/assets/next.png" alt="" srcset="">
+        </div>
+    </div> -->
+
+    <!-- Injection area -->
    
 
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                <h1>Our Weather App</h1>
-            </div>
-            <div class="col-12 d-flex justify-content-center pt-5">
-                <h2 id="place">Stockton, CA</h2>
-            </div>
+    
+      
+      
+      <!-- OffCanvas Area -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <!-- canvas header -->
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title canvas-header" id="offcanvasExampleLabel">Favorites</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- Canvas body -->
+        <div class="offcanvas-body canvas-body">
 
-            <div class="col-12 d-flex justify-content-center">
-                <h3 id="temp">91</h3>
-            </div>
+          <div id="injectFav">
+            
+          </div>
+         
+        </div>
 
-            <div class="col-6 d-flex justify-content-end">
-                <h6 >Min</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-start">
-                <h6 >Max</h6>
-            </div>
+      </div>
 
-            <div class="col-6 d-flex justify-content-end">
-                <h6 id="temp_min">78</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-start">
-                <h6 id="temp_max">99</h6>
-            </div>
 
-            <div class="col-12 d-flex justify-content-center">
-                <h6>Feels Like</h6>
-            </div>
-
-            <div class="col-12 d-flex justify-content-center">
-                <h6 id="feels_like">87</h6>
-            </div>
-
-            <div class="col-12 d-flex justify-content-center pt-5">
-                <h2>Wind</h2>
-            </div>
-
-            <div class="col-6 d-flex justify-content-end">
-                <h6>Speed</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-start">
-                <h6>Degrees</h6>
-            </div>
-
-            <div class="col-6 d-flex justify-content-end">
-                <h6 id="speed">10</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-start">
-                <h6 id="deg">300</h6>
-            </div>
-            <div class="col-12 d-flex justify-content-center pt-5">
-                <input type="text" id="">
-                <button class="btn btn-primary" id="btn">Search</button> -->
-            <!-- </div> -->
-        <!-- </div> -->
-    <!-- </div> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
