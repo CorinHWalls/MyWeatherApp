@@ -22,7 +22,7 @@ let place = document.getElementById("place"),
   dOfWeek1 = document.getElementById('dOfWeek1'),
   middayTemp1 = document.getElementById('middayTemp1'),
   description1 = document.getElementById('description1'),
-  icon1 = document.getElementById('icon1');
+  icon1 = document.getElementById('icon1');                                                 
 
 
 //Converting stringified arr into JSON obj
@@ -33,6 +33,7 @@ if (favData && favData != null) {
   for (let i = 0; i < favData.length; i++) {
     if ((i == 0)) {
       fetchWeather(favData[i].url);
+      // fetchForcast(favData[i].urlForcast);
 
       let colDiv = document.createElement("div");
       colDiv.classList = "col";
@@ -102,20 +103,32 @@ search.addEventListener("keypress", function (event) {
     fetchWeather(
       `https://api.openweathermap.org/data/2.5/weather?q=${search.value}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`
     );
+    fetchForcast(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${search.value}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`
+      );
     searchedCity = search.value;
   }
 });
+
+// Event Listeners
+
 searchBtn.addEventListener("click", function () {
   fetchWeather(
     `https://api.openweathermap.org/data/2.5/weather?q=${search.value}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`
   );
+  fetchForcast(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${search.value}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`
+    );
   searchedCity = search.value;
+
 });
 
 favBtn.addEventListener("click", function (e) {
   let obj = {
     name: weatherArr[weatherArr.length - 1].name,
-    url: `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`
+    url: `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`,
+    urlForcast: `https://api.openweathermap.org/data/2.5/forecast?q=${searchedCity}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`
+    
   };
   favArr.push(obj); //pull from local storage
   let colDiv = document.createElement("div");
