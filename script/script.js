@@ -246,9 +246,12 @@ searchBtn.addEventListener("click", function () {
 
 favBtn.addEventListener("click", function (e) {
   
-  // if( ){
+  if(searchedCity == "undefined"){
+    console.log("invalid");
+  }
+  else{
 
-  // }
+  
   let obj = {
     name: weatherArr[weatherArr.length - 1].name,
     url: `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`,
@@ -304,6 +307,7 @@ favBtn.addEventListener("click", function (e) {
 
   // Creating local storage       json.stringify converting arr into string format
   localStorage.setItem("favWeather", JSON.stringify(favArr));
+}
 });
 
 
