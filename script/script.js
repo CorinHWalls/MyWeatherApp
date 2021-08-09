@@ -62,7 +62,6 @@ let date5 = document.getElementById("date5"),
 
 //Converting stringified arr into JSON obj
 favData = JSON.parse(localStorage.getItem("favWeather"));
-
 // creating the favorite on the offCanvas
 if (favData && favData != null) {
   favArr = favData;
@@ -70,92 +69,37 @@ if (favData && favData != null) {
     if (i == 0) {
       fetchWeather(favData[i].url);
 
+      let deleteBtn = document.createElement("img");
+      deleteBtn.setAttribute("id", favData[i].id);
+      deleteBtn.setAttribute("src", "/assets/trash.png");
+     
+      // elements
       let row = document.createElement("div");
       row.classList = "row";
-
-      let col1 = document.createElement("div");
-      col1.classList = "col-1";
-
-      let col2 = document.createElement("div");
-      col2.classList = "col-11";
-
     
-      let deleteBtn = document.createElement("img");
-      deleteBtn.setAttribute("id", weatherId);
-      deleteBtn.setAttribute("src", "/assets/trash.png");
-      deleteBtn.addEventListener("click", function(event){
-        console.log("test");
-        debugger
-        for (let i = 0; i < favArr.length; i++){
-          if(favArr[i] == event.target.value){
-              favArr.splice(i, 1);
-  
-          }
-        }
-        // createFav(favArr);
-      
-      });
-      let pTag = document.createElement("p");
-      pTag.innerText = favData[i].name;
-      pTag.addEventListener("click", function (e) {
-        fetchWeather(favData[i].url);
-        fetchForcast(favData[i].urlForcast);
-      });
-
-      
-      col1.appendChild(pTag);
-      row.appendChild(col2);
-      col2.appendChild(deleteBtn);
-      row.appendChild(col1);
-      injectFav.appendChild(row);
-
-    } else {
-      let colDiv = document.createElement("div");
-      colDiv.classList = "col";
-      let deleteBtn = document.createElement("img");
-      deleteBtn.setAttribute("id", weatherId);
-      deleteBtn.setAttribute("src", "/assets/trash.png");
-      deleteBtn.addEventListener("click", function(event){
-        console.log("test");
-        debugger
-        for (let i = 0; i < favArr.length; i++){
-          
-          if(favArr[i] == event.target.value){
-              favArr.splice(i, 1);
-              
-          }
-        }
-        // createFav(favArr);
-      
-      });;
-
-      let row = document.createElement("div");
-      row.classList = "row";
-
       let col1 = document.createElement("div");
       col1.classList = "col-1";
-
+    
       let col2 = document.createElement("div");
-      col2.classList = "col-6 ";
-
       let pTag = document.createElement("p");
+      pTag.setAttribute("id",favData[i].id);
       pTag.innerText = favData[i].name;
-      pTag.addEventListener("click", function (e) {
-        fetchWeather(favData[i].url);
-        fetchForcast(favData[i].urlForcast);
-      });
-
-      // pTag.appendChild(deleteBtn);
-      // colDiv.appendChild(pTag);
-      // injectFav.appendChild(colDiv);
-
-      
+      col2.classList = "col-6 ";
       col1.appendChild(pTag);
       row.appendChild(col2);
       col2.appendChild(deleteBtn);
       row.appendChild(col1);
       injectFav.appendChild(row);
-    }
+      deleteBtn.addEventListener("click", function(event){
+        for (let i = 0; i < favArr.length; i++){
+          if((event.target.id && favArr[i].id) && parseInt(event.target.id) === favArr[i].id){
+              favArr.splice(i, 1);
+              localStorage.setItem("favWeather", JSON.stringify(favArr));
+              location.reload();
+          }
+        }
+      });
+    } 
   }
 }
 ////////////////////////////////////////////// Functions //////////////////////////////////////////////////////////////////
@@ -163,7 +107,7 @@ function fetchForcast(urlForcast) {
   fetch(urlForcast)
     .then((response) => response.json())
     .then((data) => {
-      // debugger
+      
       getForcast(data);
     });
 }
@@ -204,7 +148,7 @@ function fetchWeather(url) {
 }
 function getWeather(weatherData) {
   weatherId = weatherData.id;
-  debugger
+  
   weatherArr.push(weatherData);
   let main = weatherData.main;
   place.innerText = `${weatherData.name}, ${weatherData.sys.country}`;
@@ -215,7 +159,7 @@ function getWeather(weatherData) {
   speed.innerText = `Mph / ${parseInt(weatherData.wind.speed)}`;
   deg.innerText = `Degrees / ${parseInt(weatherData.wind.deg)}`;
   // tempIcon.src = `http://openweathermap.org/img/wn/${weatherData.list.weather[0].icon}@2x.png`;
-  console.log(weatherData);
+
 
   let current = weatherData.weather[0].main;
 
@@ -302,17 +246,20 @@ searchBtn.addEventListener("click", function () {
 
 favBtn.addEventListener("click", function (e) {
   
+  // if( ){
+
+  // }
   let obj = {
     name: weatherArr[weatherArr.length - 1].name,
     url: `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`,
     urlForcast: `https://api.openweathermap.org/data/2.5/forecast?q=${searchedCity}&units=imperial&appid=597ea5faa7bc25bc18db1409a633aa87`,
     id: weatherId
   };
-  debugger
+ 
   favArr.push(obj); //push from local storage
-  debugger
+  
   let pTag = document.createElement("p");
-  pTag.setAttribute("id","pTag");
+  pTag.setAttribute("id",weatherId);
   pTag.innerText = obj.name;
 
   // delete Fav
@@ -329,17 +276,19 @@ favBtn.addEventListener("click", function (e) {
 
   let col2 = document.createElement("div");
   col2.classList = "col-6 ";
-
+  col1.appendChild(pTag);
+  row.appendChild(col2);
+  col2.appendChild(deleteBtn);
+  row.appendChild(col1);
+  injectFav.appendChild(row);
   deleteBtn.addEventListener("click", function(event){
-    console.log("test");
     for (let i = 0; i < favArr.length; i++){
-      if(favArr[i] == event.target.value){
+      if((event.target.id && favArr[i].id) && parseInt(event.target.id) === favArr[i].id){
           favArr.splice(i, 1);
-          
+          localStorage.setItem("favWeather", JSON.stringify(favArr));
+          location.reload();
       }
     }
-    // createFav(favArr);
-  
   });
 
   pTag.addEventListener("click", function (e) {
